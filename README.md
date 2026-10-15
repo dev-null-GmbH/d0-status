@@ -24,22 +24,27 @@ fifteen minutes, including when the scheduler or publication fails.
 
 The organization currently uses GitHub Free (verified 2026-10-15); Pages cannot
 be enabled for the private application repository on that plan. This dedicated
-source contains only public status information and is prepared for a separate
-**public** `dev-null-GmbH/d0-status` repository. Do not change an application
+source contains only public status information and is published in the separate
+**public** [`dev-null-GmbH/d0-status`](https://github.com/dev-null-GmbH/d0-status) repository. Do not change an application
 repository's visibility or copy private application source into it.
 
-After reviewing the public-only source, publish this repository with `main` as
-the default branch. Enable Pages with **GitHub Actions** as the build source and
-protect the `github-pages` environment to allow only `main`. The workflow
+The reviewed public source uses `main` as the default branch. Pages uses
+**GitHub Actions** as the build source, and the `github-pages` environment allows
+only `main`. The workflow
 publishes only `dist/`, using its job-scoped Pages/OIDC permissions. It has no
 personal token, source-write access, or infrastructure credential. PRs build
 offline fixtures and cannot publish. Failed probes still publish their failed
 observations; failed builds leave the previous publication to become stale.
 
-The provider URL remains usable independently of d0 DNS. Configure
+The verified provider URL is [dev-null-gmbh.github.io/d0-status](https://dev-null-gmbh.github.io/d0-status/)
+and remains usable independently of d0 DNS. Publication run
+[38725541259](https://github.com/dev-null-GmbH/d0-status/actions/runs/38725541259)
+succeeded on 2026-10-15; anonymous HTTP and browser checks confirmed the page,
+relative script/style assets, no horizontal overflow, and no browser errors.
+Configure
 `status.d0.eu` as a verified custom domain in Pages and its public DNS only after
-the independent provider URL is verified. No remote repository, Pages site, or
-DNS record has been created by this local implementation.
+the independent provider URL is verified. The custom DNS record and Pages
+custom-domain binding have not yet been configured.
 
 ## Incident updates
 
