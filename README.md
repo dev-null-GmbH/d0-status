@@ -36,7 +36,9 @@ personal token, source-write access, or infrastructure credential. PRs build
 offline fixtures and cannot publish. Failed probes still publish their failed
 observations; failed builds leave the previous publication to become stale.
 
-The independent provider URL is [dev-null-gmbh.github.io/d0-status](https://dev-null-gmbh.github.io/d0-status/).
+The GitHub provider URL [dev-null-gmbh.github.io/d0-status](https://dev-null-gmbh.github.io/d0-status/)
+redirects to the custom domain, so it depends on d0 DNS and is not a fallback
+when that DNS is unavailable.
 The custom domain [status.d0.eu](https://status.d0.eu/) is also configured in
 Pages and resolves through a CNAME to `dev-null-gmbh.github.io`. Its certificate
 is approved through 2027-01-14 and HTTPS enforcement is enabled. Public checks
