@@ -36,15 +36,17 @@ personal token, source-write access, or infrastructure credential. PRs build
 offline fixtures and cannot publish. Failed probes still publish their failed
 observations; failed builds leave the previous publication to become stale.
 
-The verified provider URL is [dev-null-gmbh.github.io/d0-status](https://dev-null-gmbh.github.io/d0-status/)
-and remains usable independently of d0 DNS. Publication run
+The independent provider URL is [dev-null-gmbh.github.io/d0-status](https://dev-null-gmbh.github.io/d0-status/).
+The custom domain [status.d0.eu](https://status.d0.eu/) is also configured in
+Pages and resolves through a CNAME to `dev-null-gmbh.github.io`. Its certificate
+is approved through 2027-01-14 and HTTPS enforcement is enabled. Public checks
+confirmed HTTPS 200 with a valid certificate at the GitHub CDN and HTTP redirects
+to HTTPS. GitHub organization domain verification remains pending; its TXT
+record is still published. This does not prevent the Pages custom domain from
+serving over HTTPS. Publication run
 [38725541259](https://github.com/dev-null-GmbH/d0-status/actions/runs/38725541259)
 succeeded on 2026-10-15; anonymous HTTP and browser checks confirmed the page,
 relative script/style assets, no horizontal overflow, and no browser errors.
-Configure
-`status.d0.eu` as a verified custom domain in Pages and its public DNS only after
-the independent provider URL is verified. The custom DNS record and Pages
-custom-domain binding have not yet been configured.
 
 ## Incident updates
 
@@ -57,8 +59,11 @@ customer names, request bodies, private hostnames, tokens, or internal logs.
 An approved push publishes immediately; scheduled observation runs preserve
 the same incident source.
 
-The scheduled interval is ten minutes, not an uptime guarantee. GitHub can
-delay or drop scheduled runs; the visible age check then marks status unknown.
+The workflow requests runs every ten minutes, but this is not a reliable cadence
+or an uptime guarantee. Six recent scheduled runs on 2026-10-15 and 2026-10-16
+were separated by 131 to 322 minutes. GitHub can delay or drop scheduled runs;
+the visible age check then marks status unknown after fifteen minutes. Reliable
+ten-minute observation cadence remains an open requirement.
 
 Toolchain qualification on 2026-10-15: Bun 1.4.3 and checkout/setup-bun match
 the qualified web toolchain. Playwright 1.64.1 was verified against its official
