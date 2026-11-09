@@ -67,11 +67,13 @@ were separated by 131 to 322 minutes. GitHub can delay or drop scheduled runs;
 the visible age check then marks status unknown after fifteen minutes. Reliable
 ten-minute observation cadence remains an open requirement.
 
-Toolchain qualification on 2026-10-15: Bun 1.4.3 and checkout/setup-bun match
-the qualified web toolchain. Playwright 1.64.1 was verified against its official
+Toolchain qualification on 2026-10-15 used Bun 1.4.3 and the same
+checkout/setup-bun pins as the qualified web toolchain. Playwright 1.64.1 was verified against its official
 release and matches the existing web browser suite. The official `actions/upload-pages-artifact`
 v5.0.0 and `actions/deploy-pages` v5.0.1 release tags resolve to the full commit
 pins in the workflow.
+
+The 2026-11-09 toolchain pins are Bun 1.4.4 and Playwright 1.65.0.
 
 Primary references: [custom Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages),
 [scheduled workflow limitations](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule),
