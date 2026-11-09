@@ -67,7 +67,7 @@ were separated by 131 to 322 minutes. GitHub can delay or drop scheduled runs;
 the visible age check then marks status unknown after fifteen minutes. Reliable
 ten-minute observation cadence remains an open requirement.
 
-Toolchain qualification on 2026-10-15: Bun 1.4.3 and checkout/setup-bun match
+Toolchain qualification on 2026-10-15: Bun 1.4.4 and checkout/setup-bun match
 the qualified web toolchain. Playwright 1.64.1 was verified against its official
 release and matches the existing web browser suite. The official `actions/upload-pages-artifact`
 v5.0.0 and `actions/deploy-pages` v5.0.1 release tags resolve to the full commit
