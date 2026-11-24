@@ -10,5 +10,7 @@ infrastructure addresses, customer identifiers, or customer payloads.
 - Stale or missing observations are unknown, never operational.
 - Do not derive uptime percentages or availability promises from these probes.
 - Preserve independent hosting: GitHub-hosted runners and GitHub Pages, not FRA1.
-- Verify with `bun test`, `bun run build.ts --fixture`, and the browser smoke.
-- Public publication is separate from committing this local implementation.
+- Verify with `bun test`, `bun run build.ts --fixture`, and `bun run test:browser`.
+- A push to `main` triggers the public Pages workflow. A successful build on
+  `main` can publish the site, including incident changes. Pull requests run
+  fixture checks without publishing.
