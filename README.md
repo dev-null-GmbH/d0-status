@@ -32,9 +32,11 @@ The reviewed public source uses `main` as the default branch. Pages uses
 **GitHub Actions** as the build source, and the `github-pages` environment allows
 only `main`. The workflow
 publishes only `dist/`, using its job-scoped Pages/OIDC permissions. It has no
-personal token, source-write access, or infrastructure credential. PRs build
-offline fixtures and cannot publish. Failed probes still publish their failed
-observations; failed builds leave the previous publication to become stale.
+personal token, source-write access, or infrastructure credential. PRs and
+pushes limited to recognized policy and browser-test files build offline
+fixtures. Site changes and scheduled observations publish from `main`. Failed
+probes still publish their failed observations. Failed builds leave the previous
+publication to become stale.
 
 The GitHub provider URL [dev-null-gmbh.github.io/d0-status](https://dev-null-gmbh.github.io/d0-status/)
 redirects to the custom domain, so it depends on d0 DNS and is not a fallback
@@ -73,7 +75,15 @@ release and matches the existing web browser suite. The official `actions/upload
 v5.0.0 and `actions/deploy-pages` v5.0.1 release tags resolve to the full commit
 pins in the workflow.
 
-The 2026-11-09 toolchain pins are Bun 1.4.4 and Playwright 1.65.0.
+The toolchain pins are [Bun 1.4.5](https://github.com/oven-sh/bun/releases/tag/bun-v1.4.5)
+and [Playwright 1.65.1](https://github.com/microsoft/playwright/releases/tag/v1.65.1).
+
+The Pages job records the exact `dist/` file hashes and publishes the verified
+directory. A separate weekly Monday and manual workflow checks the publicly
+served HTML, JSON, CSS and JavaScript and retains the unfiltered Bun advisory
+report for the locked browser-test dependencies. Those dependencies do not ship
+in `dist/`. The status maintainer investigates failed checks and unavailable
+observations independently of service incident reporting.
 
 Primary references: [custom Pages workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages),
 [scheduled workflow limitations](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule),
